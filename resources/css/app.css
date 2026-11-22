@@ -1,11 +1,72 @@
-@import 'tailwindcss';
-
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
-
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    --cc-cream: #FFF7EC;
+    --cc-pink: #F4B6C2;
+    --cc-pink-deep: #E88CA0;
+    --cc-pink-soft: #FDE8EC;
+    --cc-brown: #4A2C23;
+    --cc-lavender: #9C84C9;
+    --cc-gold: #C9A24A;
 }
+
+body {
+    background-color: var(--cc-cream);
+    color: var(--cc-brown);
+}
+
+.cc-script { font-family: 'Dancing Script', cursive; }
+
+.cc-nav {
+    background: #ffffff;
+    border-bottom: 2px solid var(--cc-pink);
+}
+
+.cc-header {
+    background: var(--cc-pink-soft);
+    border-bottom: 1px solid var(--cc-pink);
+}
+
+.cc-card {
+    background: #ffffff;
+    border: 1px solid var(--cc-pink);
+    border-radius: 1rem;
+    box-shadow: 0 4px 14px rgba(232, 140, 160, 0.18);
+}
+/* ---------- Buttons ---------- */
+.cc-btn {
+    display: inline-block;
+    padding: 0.65rem 1.4rem;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+.cc-btn-sm { padding: 0.4rem 1rem; font-size: 0.85rem; }
+
+.cc-btn-solid { background: #E88CA0; color: #ffffff; }
+.cc-btn-solid:hover { background: #d9738a; }
+
+.cc-btn-soft { background: #FDE8EC; color: #4A2C23; border-color: #F4B6C2; }
+.cc-btn-soft:hover { background: #F8C8D4; }
+
+.cc-btn-lav { background: #ECE5F8; color: #4A2C23; border-color: #C9B8E8; }
+.cc-btn-lav:hover { background: #DCCFF2; }
+
+/* ---------- Logo sizes ---------- */
+.cc-logo-nav {
+    width: 2.75rem; height: 2.75rem;
+    border-radius: 9999px; object-fit: cover;
+}
+.cc-logo-hero {
+    width: 9rem; height: 9rem;
+    border-radius: 9999px; object-fit: cover;
+    border: 4px solid #ffffff;
+    box-shadow: 0 6px 20px rgba(232, 140, 160, 0.3);
+}
+
+/* ---------- Pastel hero ---------- */
+.cc-hero { background: linear-gradient(180deg, #FDE8EC 0%, #FFF7EC 100%); }
