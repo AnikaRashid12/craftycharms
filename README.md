@@ -50,3 +50,10 @@ In active development.
 
 ## Author
 Anika Rashid – [github.com/AnikaRashid12](https://github.com/AnikaRashid12)
+
+##Some sneak peeks of the website 
+
+<img width="921" height="826" alt="image" src="https://github.com/user-attachments/assets/28d15de7-182c-44ce-bc03-38e8693a9649" />
+
+<img width="916" height="878" alt="image" src="https://github.com/user-attachments/assets/9836838c-74d4-4cf7-9d38-353385c70d1b" />
+
