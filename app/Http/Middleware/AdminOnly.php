@@ -1,6 +1,17 @@
-public function handle(Request $request, Closure $next): Response
-{
-    abort_unless($request->user() && $request->user()->isAdmin(), 403, 'Admins only.');
+<?php
 
-    return $next($request);
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class AdminOnly
+{
+    public function handle(Request $request, Closure $next): Response
+    {
+        abort_unless($request->user() && $request->user()->isAdmin(), 403, 'Admins only.');
+
+        return $next($request);
+    }
 }
