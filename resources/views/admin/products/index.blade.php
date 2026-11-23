@@ -35,12 +35,12 @@
                                 @php $profit = $product->price - $product->cost_price; @endphp
                                 <tr class="border-t border-[#F4B6C2]/50">
                                     <td class="px-4 py-3 font-medium">{{ $product->name }}</td>
-                                    <td class="px-4 py-3">@money($product->cost_price)</td>
-                                    <td class="px-4 py-3">@money($product->price)</td>
-                                    <td class="px-4 py-3 {{ $profit < 0 ? 'text-red-600' : '' }}">@money($profit)</td>
+                                    <td class="px-4 py-3 whitespace-nowrap">@money($product->cost_price)</td>
+                                    <td class="px-4 py-3 whitespace-nowrap">@money($product->price)</td>
+                                    <td class="px-4 py-3 whitespace-nowrap {{ $profit < 0 ? 'text-red-600' : '' }}">@money($profit)</td>
                                     <td class="px-4 py-3">{{ $product->initial_sold }}</td>
                                     <td class="px-4 py-3">
-                                        <span class="rounded-full px-3 py-1 text-xs {{ $product->in_stock ? 'bg-[#E4F5E9]' : 'bg-[#FDE8EC]' }}">
+                                        <span class="rounded-full px-3 py-1 text-xs whitespace-nowrap {{ $product->in_stock ? 'bg-[#E4F5E9]' : 'bg-[#FDE8EC]' }}">
                                             {{ $product->in_stock ? 'In stock' : 'Out of stock' }}
                                         </span>
                                     </td>

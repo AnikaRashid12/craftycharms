@@ -1,19 +1,30 @@
 <?php
 
-namespace Database\Seeders;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use App\Models\User;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-
-class DatabaseSeeder extends Seeder
+return new class extends Migration
 {
-    public function run(): void
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
-        $admin = User::firstOrNew(['email' => 'admin@craftycharms.test']);
-        $admin->name = 'Shop Admin';
-        $admin->password = Hash::make('ChangeMe123!');
-        $admin->role = 'admin';
-        $admin->save();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->default('user')->after('password'); // user | admin
+            $table->string('phone')->nullable()->after('role');
+            $table->text('address')->nullable()->after('phone');
+        });
     }
-}
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['role', 'phone', 'address']);
+        });
+    }
+};

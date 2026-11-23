@@ -18,7 +18,6 @@ class Product extends Model
         'description',
         'price',
         'cost_price',
-        'image',
         'initial_sold',
         'in_stock',
     ];
@@ -34,6 +33,17 @@ class Product extends Model
         'cost_price',
         'initial_sold',
     ];
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class)->orderBy('sort_order')->orderBy('id');
+    }
+
+    // The first photo is the cover photo.
+    public function getCoverAttribute(): ?string
+    {
+        return $this->images->first()?->path;
+    }
 
     public function scopeInStock($query)
     {

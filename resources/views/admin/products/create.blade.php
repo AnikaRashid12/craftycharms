@@ -53,9 +53,11 @@
                     </div>
 
                     <div>
-                        <x-input-label for="image" value="Photo (JPG, PNG or WEBP, up to 4 MB)" />
-                        <input id="image" name="image" type="file" accept="image/*" class="mt-1 block w-full text-sm">
-                        <x-input-error :messages="$errors->get('image')" class="mt-2" />
+                        <x-input-label for="images" value="Photos (JPG, PNG or WEBP, up to 8 photos, 4 MB each. The first is the cover.)" />
+                        <input id="images" name="images[]" type="file" accept="image/*" multiple class="mt-1 block w-full text-sm">
+                        <x-input-error :messages="$errors->get('images')" class="mt-2" />
+                        <x-input-error :messages="collect($errors->get('images.*'))->flatten()->all()" class="mt-2" />
+                        <p class="mt-1 text-xs opacity-70">Hold Ctrl (or Shift) while clicking to choose several photos at once.</p>
                     </div>
 
                     <label class="inline-flex items-center gap-2">

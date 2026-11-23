@@ -10,9 +10,9 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $admin = User::firstOrNew(['email' => 'admin@craftycharms.test']);
+        $admin = User::firstOrNew(['email' => 'anika.rashid@g.bracu.ac.bd']);
         $admin->name = 'Shop Admin';
-        $admin->password = Hash::make('ChangeMe123!');
+        $admin->password = Hash::make('@Harun12');
         $admin->role = 'admin';
         $admin->save();
     }

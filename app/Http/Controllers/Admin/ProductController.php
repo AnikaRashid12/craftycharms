@@ -32,18 +32,23 @@ class ProductController extends Controller
             'price'        => ['required', 'numeric', 'min:0'],
             'cost_price'   => ['required', 'numeric', 'min:0'],
             'initial_sold' => ['nullable', 'integer', 'min:0'],
-            'image'        => ['nullable', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+            'images'       => ['nullable', 'array', 'max:8'],
+            'images.*'     => ['mimes:jpg,jpeg,png,webp', 'max:4096'],
         ]);
 
         $data['slug']         = $this->uniqueSlug($data['name']);
         $data['initial_sold'] = $data['initial_sold'] ?? 0;
         $data['in_stock']     = $request->boolean('in_stock');
+        unset($data['images']);
 
-        if ($request->hasFile('image')) {
-            $data['image'] = $this->saveImage($request->file('image'));
+        $product = Product::create($data);
+
+        foreach ($request->file('images', []) as $i => $file) {
+            $product->images()->create([
+                'path'       => $this->saveImage($file),
+                'sort_order' => $i,
+            ]);
         }
-
-        Product::create($data);
 
         return redirect()->route('admin.products.index')->with('status', 'Product added.');
     }
