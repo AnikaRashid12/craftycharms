@@ -28,26 +28,58 @@
                                 <th class="px-4 py-3">Profit (per piece)</th>
                                 <th class="px-4 py-3">Sold pieces</th>
                                 <th class="px-4 py-3">Availability</th>
+                                <th class="px-4 py-3">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($items as $product)
                                 @php $profit = $product->price - $product->cost_price; @endphp
                                 <tr class="border-t border-[#F4B6C2]/50">
-                                    <td class="px-4 py-3 font-medium">{{ $product->name }}</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center gap-3">
+                                            @if ($product->cover)
+                                                <img src="{{ asset($product->cover) }}" alt="{{ $product->name }}"
+                                                     class="h-10 w-10 rounded-lg object-cover">
+                                            @else
+                                                <div class="h-10 w-10 rounded-lg bg-[#FDE8EC]"></div>
+                                            @endif
+                                            <span class="font-medium">{{ $product->name }}</span>
+                                        </div>
+                                    </td>
                                     <td class="px-4 py-3 whitespace-nowrap">@money($product->cost_price)</td>
                                     <td class="px-4 py-3 whitespace-nowrap">@money($product->price)</td>
                                     <td class="px-4 py-3 whitespace-nowrap {{ $profit < 0 ? 'text-red-600' : '' }}">@money($profit)</td>
                                     <td class="px-4 py-3">{{ $product->initial_sold }}</td>
                                     <td class="px-4 py-3">
-                                        <span class="rounded-full px-3 py-1 text-xs whitespace-nowrap {{ $product->in_stock ? 'bg-[#E4F5E9]' : 'bg-[#FDE8EC]' }}">
-                                            {{ $product->in_stock ? 'In stock' : 'Out of stock' }}
-                                        </span>
+                                        <form method="POST" action="{{ route('admin.products.stock', $product) }}">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" title="Click to change"
+                                                    class="rounded-full px-3 py-1 text-xs whitespace-nowrap {{ $product->in_stock ? 'bg-[#E4F5E9]' : 'bg-[#FDE8EC]' }}">
+                                                {{ $product->in_stock ? 'In stock' : 'Out of stock' }}
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center gap-2">
+                                            <a href="{{ route('admin.products.edit', $product) }}"
+                                               class="cc-btn cc-btn-sm cc-btn-soft">Edit</a>
+
+                                            <form method="POST" action="{{ route('admin.products.destroy', $product) }}"
+                                                  onsubmit="return confirm('Delete {{ addslashes($product->name) }}? This cannot be undone.')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                        class="cc-btn cc-btn-sm bg-white text-red-700 border-red-200 hover:bg-red-50">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="px-4 py-8 text-center opacity-70">
+                                    <td colspan="7" class="px-4 py-8 text-center opacity-70">
                                         No {{ strtolower($title) }} products yet.
                                     </td>
                                 </tr>

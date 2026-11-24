@@ -20,7 +20,11 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', fn () => view('admin.dashboard'))->name('dashboard');
-    Route::resource('products', ProductController::class)->only(['index', 'create', 'store']);
+
+    Route::resource('products', ProductController::class)->except(['show']);
+    Route::patch('products/{product}/stock', [ProductController::class, 'toggleStock'])->name('products.stock');
+    Route::patch('product-images/{image}/cover', [ProductController::class, 'makeCover'])->name('products.images.cover');
+    Route::delete('product-images/{image}', [ProductController::class, 'destroyImage'])->name('products.images.destroy');
 });
 
 require __DIR__.'/auth.php';
