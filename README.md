@@ -64,4 +64,7 @@ Anika Rashid – [github.com/AnikaRashid12](https://github.com/AnikaRashid12)
 
 <img width="1915" height="906" alt="image" src="https://github.com/user-attachments/assets/53c0d4c8-bae4-4741-a117-70c9d4d99ea3" />
 
+<img width="1622" height="886" alt="image" src="https://github.com/user-attachments/assets/4524d122-5a21-40d7-9ed9-7fb09a55060c" />
+
+<img width="1467" height="915" alt="image" src="https://github.com/user-attachments/assets/69cdd1b3-d410-4b8b-bacf-df5cbe4dd487" />
 
