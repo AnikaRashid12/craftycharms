@@ -52,12 +52,14 @@ In active development.
 Anika Rashid – [github.com/AnikaRashid12](https://github.com/AnikaRashid12)
 
 ##Some sneak peeks of the website 
-## Admin section
+
 
 
 <img width="921" height="826" alt="image" src="https://github.com/user-attachments/assets/28d15de7-182c-44ce-bc03-38e8693a9649" />
 
 <img width="916" height="878" alt="image" src="https://github.com/user-attachments/assets/9836838c-74d4-4cf7-9d38-353385c70d1b" />
+
+## Admin section
 
 <img width="1390" height="598" alt="Screenshot 2026-11-23 034805" src="https://github.com/user-attachments/assets/ee8205ed-5fde-4fd2-b259-f6f19b5d8ef7" />
 
